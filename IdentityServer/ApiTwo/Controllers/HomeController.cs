@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using IdentityModel.Client;
+using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IdentityModel.Client;
 
 namespace ApiTwo.Controllers
 {
@@ -35,7 +32,7 @@ namespace ApiTwo.Controllers
                     ClientId = "client_id",
                     ClientSecret = "client_secret",
 
-                    Scope = "ApiOne"
+                    Scope = "ApiOne.read"
                 });// returned token contains access token
 
             // 2 - retrieve secret data

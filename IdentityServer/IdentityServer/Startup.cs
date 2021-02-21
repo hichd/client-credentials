@@ -10,6 +10,7 @@ namespace IdentityServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityServer()
+                .AddInMemoryApiScopes(Configuration.GetApiScopes())
                 .AddInMemoryApiResources(Configuration.GetApis())// apis granting access to
                 .AddInMemoryClients(Configuration.GetClients())// clients dealing tokens out to
                 .AddDeveloperSigningCredential();// generate certificate

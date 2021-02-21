@@ -6,8 +6,15 @@ namespace IdentityServer
 {
     public static class Configuration
     {
+        public static IEnumerable<ApiScope> GetApiScopes() =>
+            new List<ApiScope> { new ApiScope("ApiOne.read") };
+
         public static IEnumerable<ApiResource> GetApis() =>
-            new List<ApiResource> { new ApiResource("ApiOne") };
+            new List<ApiResource> { new ApiResource("ApiOne")
+                {
+                    Scopes = { "ApiOne.read" }
+                } 
+            };
 
         public static IEnumerable<Client> GetClients() =>
             new List<Client> { new Client {
@@ -18,7 +25,7 @@ namespace IdentityServer
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
 
                     // what resource this access token is used for
-                    AllowedScopes = { "ApiOne" }
+                    AllowedScopes = { "ApiOne.read" }
                 }
             };
     }

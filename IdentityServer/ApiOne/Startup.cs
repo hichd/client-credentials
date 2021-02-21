@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,7 +10,7 @@ namespace ApiOne
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication()
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer("Bearer", config =>
                 {
                     config.Authority = "https://localhost:44385/"; // identity server url : tell api where to pass access tokens to validate
